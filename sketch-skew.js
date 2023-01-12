@@ -4,7 +4,7 @@ const random = require("canvas-sketch-util/random");
 const Color = require("canvas-sketch-util/color");
 const risoColors = require("riso-colors");
 
-const seed = Date.now();
+const seed = prompt("Enter a seed:");
 console.log(seed);
 
 const settings = {
