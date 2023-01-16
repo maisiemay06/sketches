@@ -51,8 +51,7 @@ const sketch = ({ width, height, canvas }) => {
   const fitRadius = dotRadius;
 
   elCanvas = canvas;
-  canvas.addEventListener("mousedown", onMouseDown);
-  canvas.addEventListener("touchstart", onMouseDown);
+  canvas.addEventListener("pointerdown", onMouseDown);
 
   for (let i = 0; i < numCircles; i++) {
     const circumference = Math.PI * 2 * cirRadius;
@@ -112,10 +111,8 @@ const sketch = ({ width, height, canvas }) => {
 };
 
 const onMouseDown = (e) => {
-  window.addEventListener("mousemove", onMouseMove);
-  window.addEventListener("touchmove", onTouchMove);
-  window.addEventListener("mouseup", onMouseUp);
-  window.addEventListener("touchend", onMouseUp);
+  window.addEventListener("pointermove", onMouseMove);
+  window.addEventListener("pointerup", onMouseUp);
 
   onMouseMove(e);
 };
@@ -128,18 +125,9 @@ const onMouseMove = (e) => {
   cursor.y = y;
 };
 
-const onTouchMove = (e) => {
-  e.preventDefault();
-  let touch = e.touches[0];
-  cursor.x = touch.clientX;
-  cursor.y = touch.clientY;
-};
-
 const onMouseUp = (e) => {
-  window.removeEventListener("mousemove", onMouseMove);
-  window.removeEventListener("touchmove", onTouchMove);
-  window.removeEventListener("mouseup", onMouseUp);
-  window.removeEventListener("touchend", onMouseUp);
+  window.removeEventListener("pointermove", onMouseMove);
+  window.removeEventListener("pointerup", onMouseUp);
 
   cursor.x = 9999;
   cursor.y = 9999;
