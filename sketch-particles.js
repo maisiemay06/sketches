@@ -113,7 +113,7 @@ const sketch = ({ width, height, canvas }) => {
 
 const onMouseDown = (e) => {
   window.addEventListener("mousemove", onMouseMove);
-  window.addEventListener("touchmove", onMouseMove);
+  window.addEventListener("touchmove", onTouchMove);
   window.addEventListener("mouseup", onMouseUp);
   window.addEventListener("touchend", onMouseUp);
 
@@ -128,9 +128,16 @@ const onMouseMove = (e) => {
   cursor.y = y;
 };
 
+const onTouchMove = (e) => {
+  e.preventDefault();
+  let touch = e.touches[0];
+  cursor.x = touch.clientX;
+  cursor.y = touch.clientY;
+};
+
 const onMouseUp = (e) => {
   window.removeEventListener("mousemove", onMouseMove);
-  window.removeEventListener("touchmove", onMouseMove);
+  window.removeEventListener("touchmove", onTouchMove);
   window.removeEventListener("mouseup", onMouseUp);
   window.removeEventListener("touchend", onMouseUp);
 
