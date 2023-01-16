@@ -51,7 +51,7 @@ const sketch = ({ width, height, canvas }) => {
   const fitRadius = dotRadius;
 
   elCanvas = canvas;
-  canvas.addEventListener("pointerdown", onMouseDown);
+  canvas.addEventListener("mousedown", onMouseDown);
 
   for (let i = 0; i < numCircles; i++) {
     const circumference = Math.PI * 2 * cirRadius;
@@ -111,8 +111,8 @@ const sketch = ({ width, height, canvas }) => {
 };
 
 const onMouseDown = (e) => {
-  window.addEventListener("pointermove", onMouseMove);
-  window.addEventListener("pointerup", onMouseUp);
+  window.addEventListener("mousemove", onMouseMove);
+  window.addEventListener("mouseup", onMouseUp);
 
   onMouseMove(e);
 };
@@ -126,8 +126,8 @@ const onMouseMove = (e) => {
 };
 
 const onMouseUp = (e) => {
-  window.removeEventListener("pointermove", onMouseMove);
-  window.removeEventListener("pointerup", onMouseUp);
+  window.removeEventListener("mousemove", onMouseMove);
+  window.removeEventListener("mouseup", onMouseUp);
 
   cursor.x = 9999;
   cursor.y = 9999;
